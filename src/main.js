@@ -126,7 +126,7 @@ var currentPoster;
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', mainPageLoad)
-showRandom.addEventListener('click', buttonClick)
+showRandom.addEventListener('click', showRandomPoster)
 showForm.addEventListener('click', makePosterButton)
 showSaved.addEventListener('click', showSavedPosterButton)
 backToMain.addEventListener('click', backToMainButton)
@@ -160,19 +160,21 @@ function mainPageLoad () {
   singleImage.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
-  singleImage.src = getRandomIndex(images)
-  title.innerText = getRandomIndex(titles)
-  quote.innerText = getRandomIndex(quotes)
+  console.log(currentPoster)
+  // singleImage.src = getRandomIndex(images)
+  // title.innerText = getRandomIndex(titles)
+  // quote.innerText = getRandomIndex(quotes)
 }
 
-function buttonClick() {
+function showRandomPoster() {
   currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
   singleImage.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
-  singleImage.src = getRandomIndex(images)
-  title.innerText = getRandomIndex(titles)
-  quote.innerText = getRandomIndex(quotes)
+  console.log(currentPoster)
+  // singleImage.src = getRandomIndex(images)
+  // title.innerText = getRandomIndex(titles)
+  // quote.innerText = getRandomIndex(quotes)
   
 }
 
@@ -202,6 +204,7 @@ function displayUserInputPoster() {
 function saveAnyPoster() {
   // if (savedPosters.length === 0) (example)
   savedPosters.push(currentPoster)
+  console.log(savedPosters)
   // return; (example)
 }
 

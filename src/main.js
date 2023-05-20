@@ -131,6 +131,7 @@ showForm.addEventListener('click', makePosterButton)
 showSaved.addEventListener('click', showSavedPosterButton)
 backToMain.addEventListener('click', backToMainButton)
 nvmBackToMain.addEventListener('click', nvmButton)
+savePoster.addEventListener('click', saveAnyPoster)
 showMyPoster.addEventListener('click', function (event){
   event.preventDefault()
   displayUserInputPoster()
@@ -152,35 +153,27 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
-var randomPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
-// var savePoster = save(createPoster())
-
-// this is iteration 0 stuff
-
 // show random poster button
 
 function mainPageLoad () {
-  singleImage.src = randomPoster.imageURL
-  title.innerText = randomPoster.title
-  quote.innerText = randomPoster.quote
+  currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+  singleImage.src = currentPoster.imageURL
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
   singleImage.src = getRandomIndex(images)
   title.innerText = getRandomIndex(titles)
   quote.innerText = getRandomIndex(quotes)
-}
-
-function nvmButton () {
-  show(mainPage)
-  hide(posterForm)
 }
 
 function buttonClick() {
-  singleImage.src = randomPoster.imageURL
-  title.innerText = randomPoster.title
-  quote.innerText = randomPoster.quote
+  currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+  singleImage.src = currentPoster.imageURL
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
   singleImage.src = getRandomIndex(images)
   title.innerText = getRandomIndex(titles)
   quote.innerText = getRandomIndex(quotes)
-
+  
 }
 
 function show(element) {
@@ -190,15 +183,27 @@ function show(element) {
 function hide(element) {
   element.classList.add('hidden')
 }
+
 function displayUserInputPoster() {
-  var userInputPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
-  singleImage.src = userInputPoster.imageURL
-  title.innerText = userInputPoster.title
-  quote.innerText = userInputPoster.quote
+  currentPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
+  singleImage.src = currentPoster.imageURL
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
+  
+  images.push(userInputImage.value)
+  titles.push(userInputTitle.value)
+  quotes.push(userInputQuote.value)
+  
   hide(posterForm)
   show(mainPage)
-  // return userInputPoster
-  }
+  // return currentPoster
+}
+
+function saveAnyPoster() {
+  // if (savedPosters.length === 0) (example)
+  savedPosters.push(currentPoster)
+  // return; (example)
+}
 
 
 
@@ -217,6 +222,10 @@ function backToMainButton() {
   hide(savePage)
 }
 
+function nvmButton () {
+  show(mainPage)
+  hide(posterForm)
+}
 
 
 

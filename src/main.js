@@ -160,7 +160,7 @@ function mainPageLoad () {
   singleImage.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
-  console.log(currentPoster)
+  // console.log(currentPoster)
   // singleImage.src = getRandomIndex(images)
   // title.innerText = getRandomIndex(titles)
   // quote.innerText = getRandomIndex(quotes)
@@ -200,15 +200,29 @@ function displayUserInputPoster() {
   show(mainPage)
   // return currentPoster
 }
+// function saveAnyPoster () {
+//   var isDuplicate = false
+//   for (var i = 0; i < savedPosters.length; i++) {
+//     if (savedPosters[i].id === currentPoster.id) {
+//       isDuplicate = true
+//     } else (!isDuplicate) {
+//       savedPosters.push(currentPoster)
+//     }
+//   } 
+// }
 
 function saveAnyPoster() {
-  // if (savedPosters.length === 0) (example)
-  savedPosters.push(currentPoster)
-  console.log(savedPosters)
-  // return; (example)
+  var isDuplicate = false;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === currentPoster.id) {
+      isDuplicate = true;
+      return;
+    }
+  } if (!isDuplicate) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters);
+  }
 }
-
-
 
 function makePosterButton() {    
   show(posterForm)

@@ -19,7 +19,7 @@ This application gives the user a space to create and store inspirational poster
 
 
 ### Preview of App:
-![application screenshot](./17CF8BC7-EAAF-44EA-BC1D-F9351D820D0F.png)
+![17CF8BC7-EAAF-44EA-BC1D-F9351D820D0F](https://github.com/LDeLaRosa13/hang-in-there-butterCup/assets/130028791/c5f47920-8866-4b27-8055-01b02fe10489)
 
 ### Context:
 - We spent 25-30 hours working on this project. We are in week two of Mod 1.
@@ -51,3 +51,4 @@ Troubleshooting with precision by using console.log in the right places. Pseudoc
 Challenges: When we encountered a particularly difficult problem while writing code, we were able to overcome it through persistence and problem-solving as a team.
 
 Even though the project had tasks that we hadn’t encountered before, we broke down the assignment into small chunks of manageable problems.
+

@@ -7,7 +7,7 @@
 - the ability to switch between multiple tabs for a different view of the application
 - the ability to make custom posters by using the users input
 - the ability to save a random or custom made poster
-<!-- the ability to delete any previously saved posters -->
+- the ability to delete any previously saved posters
 - This application gives the user a space to create and store inspirational posters. They can also browse a random selection of pre-existing inspirational posters.
 
 ### Installation Instructions:

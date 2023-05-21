@@ -138,6 +138,7 @@ showMyPoster.addEventListener('click', function (event){
 })
 
 
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -160,10 +161,6 @@ function mainPageLoad () {
   singleImage.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
-  // console.log(currentPoster)
-  // singleImage.src = getRandomIndex(images)
-  // title.innerText = getRandomIndex(titles)
-  // quote.innerText = getRandomIndex(quotes)
 }
 
 function showRandomPoster() {
@@ -172,10 +169,6 @@ function showRandomPoster() {
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
   console.log(currentPoster)
-  // singleImage.src = getRandomIndex(images)
-  // title.innerText = getRandomIndex(titles)
-  // quote.innerText = getRandomIndex(quotes)
-  
 }
 
 function show(element) {
@@ -200,16 +193,6 @@ function displayUserInputPoster() {
   show(mainPage)
   // return currentPoster
 }
-// function saveAnyPoster () {
-//   var isDuplicate = false
-//   for (var i = 0; i < savedPosters.length; i++) {
-//     if (savedPosters[i].id === currentPoster.id) {
-//       isDuplicate = true
-//     } else (!isDuplicate) {
-//       savedPosters.push(currentPoster)
-//     }
-//   } 
-// }
 
 function saveAnyPoster() {
   var isDuplicate = false;
@@ -244,14 +227,3 @@ function nvmButton () {
   hide(posterForm)
 }
 
-
-
-// create an object OR connect to given object somehow
-// display users new poster on button click
-// event.preventDefault() apply where necessary
-// hide the randomized poster that is usually on the main page
-// push users input into the given array (savedposters)
-// temp store-empty [] function( {var array = []}) (currentposter)
-// .mini posters
-
-// we need to unhide line 24, hide line 11

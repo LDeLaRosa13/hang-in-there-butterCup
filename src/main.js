@@ -20,6 +20,8 @@ var userInputImage = document.querySelector('#poster-image-url');
 var userInputTitle = document.querySelector('#poster-title');
 var userInputQuote = document.querySelector('#poster-quote');
 
+var savedGrid = document.querySelector('.saved-posters-grid')
+
 
 
 // we've provided you with some data to work with 👇
@@ -122,6 +124,7 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var savedGrid;
 
 
 // event listeners go here 👇
@@ -129,6 +132,7 @@ document.addEventListener('DOMContentLoaded', mainPageLoad)
 showRandom.addEventListener('click', showRandomPoster)
 showForm.addEventListener('click', makePosterButton)
 showSaved.addEventListener('click', showSavedPosterButton)
+showSaved.addEventListener('click', displaySavedPosters);
 backToMain.addEventListener('click', backToMainButton)
 nvmBackToMain.addEventListener('click', nvmButton)
 savePoster.addEventListener('click', saveAnyPoster)
@@ -204,6 +208,20 @@ function saveAnyPoster() {
   } if (!isDuplicate) {
     savedPosters.push(currentPoster);
     console.log(savedPosters);
+  }
+}
+
+function displaySavedPosters() {
+  show(savedGrid)
+  hide(mainPage)
+  savedGrid.innerHTML = ''
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedGrid.innerHTML +=
+      `<article class="mini-poster" id= "${savedPosters[i].id}">
+      <img src="${savedPosters[i].imageURL}" alt="user generated poster">
+      <h2>${savedPosters[i].title}</h2>
+      <h4> ${savedPosters[i].quote}</h4>
+    </article>`
   }
 }
 

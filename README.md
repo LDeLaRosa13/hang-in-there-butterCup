@@ -3,15 +3,15 @@
 ### Abstract:
  We built a web application that generates random inspirational posters with different images, titles, and quotes as well as gives the user the opportunity to create their own, unique poster. This application also allows the user to store their current favorite posters in a seperate tab and delete them whenever they need. The features included are:
 
-the ability to generate a new random poster each time the page loads
-the ability to switch between multiple tabs for a different view of the application
-the ability to make custom posters by using the users input
-the ability to save a random or custom made poster
+- the ability to generate a new random poster each time the page loads
+- the ability to switch between multiple tabs for a different view of the application
+- the ability to make custom posters by using the users input
+- the ability to save a random or custom made poster
 <!-- the ability to delete any previously saved posters -->
-This application gives the user a space to create and store inspirational posters. They can also browse a random selection of pre-existing inspirational posters.
+- This application gives the user a space to create and store inspirational posters. They can also browse a random selection of pre-existing inspirational posters.
 
 ### Installation Instructions:
-1. Go to https://github.com/LDeLaRosa13
+1. Go to https://github.com/LDeLaRosa13/hang-in-there-butterCup
 2. Click on 'code' and copy the SSH
 3. Open your terminal and enter the command git clone [SSH]
 4. Enter the command cd hang-in-there-butterCup

@@ -19,7 +19,7 @@ This application gives the user a space to create and store inspirational poster
 
 
 ### Preview of App:
-![application screenshot](17CF8BC7-EAAF-44EA-BC1D-F9351D820D0F.png)
+![application screenshot](./17CF8BC7-EAAF-44EA-BC1D-F9351D820D0F.png)
 
 ### Context:
 - We spent 25-30 hours working on this project. We are in week two of Mod 1.

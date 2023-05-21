@@ -144,7 +144,6 @@ showMyPoster.addEventListener('click', function (event){
 
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   var indexPosition =  Math.floor(Math.random() * array.length);
   return array[indexPosition]
@@ -157,8 +156,6 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
-
-// show random poster button
 
 function mainPageLoad () {
   currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))

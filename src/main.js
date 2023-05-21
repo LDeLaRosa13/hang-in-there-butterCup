@@ -20,6 +20,8 @@ var userInputImage = document.querySelector('#poster-image-url');
 var userInputTitle = document.querySelector('#poster-title');
 var userInputQuote = document.querySelector('#poster-quote');
 
+var savedGrid = document.querySelector('.saved-posters-grid')
+
 
 
 // we've provided you with some data to work with 👇
@@ -122,13 +124,15 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+var savedGrid;
 
 
 // event listeners go here 👇
 document.addEventListener('DOMContentLoaded', mainPageLoad)
-showRandom.addEventListener('click', buttonClick)
+showRandom.addEventListener('click', showRandomPoster)
 showForm.addEventListener('click', makePosterButton)
 showSaved.addEventListener('click', showSavedPosterButton)
+showSaved.addEventListener('click', displaySavedPosters);
 backToMain.addEventListener('click', backToMainButton)
 nvmBackToMain.addEventListener('click', nvmButton)
 savePoster.addEventListener('click', saveAnyPoster)
@@ -136,6 +140,7 @@ showMyPoster.addEventListener('click', function (event){
   event.preventDefault()
   displayUserInputPoster()
 })
+
 
 
 // functions and event handlers go here 👇
@@ -160,20 +165,14 @@ function mainPageLoad () {
   singleImage.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
-  singleImage.src = getRandomIndex(images)
-  title.innerText = getRandomIndex(titles)
-  quote.innerText = getRandomIndex(quotes)
 }
 
-function buttonClick() {
+function showRandomPoster() {
   currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
   singleImage.src = currentPoster.imageURL
   title.innerText = currentPoster.title
   quote.innerText = currentPoster.quote
-  singleImage.src = getRandomIndex(images)
-  title.innerText = getRandomIndex(titles)
-  quote.innerText = getRandomIndex(quotes)
-  
+  console.log(currentPoster)
 }
 
 function show(element) {
@@ -200,12 +199,31 @@ function displayUserInputPoster() {
 }
 
 function saveAnyPoster() {
-  // if (savedPosters.length === 0) (example)
-  savedPosters.push(currentPoster)
-  // return; (example)
+  var isDuplicate = false;
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === currentPoster.id) {
+      isDuplicate = true;
+      return;
+    }
+  } if (!isDuplicate) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters);
+  }
 }
 
-
+function displaySavedPosters() {
+  show(savedGrid)
+  hide(mainPage)
+  savedGrid.innerHTML = ''
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedGrid.innerHTML +=
+      `<article class="mini-poster" id= "${savedPosters[i].id}">
+      <img src="${savedPosters[i].imageURL}" alt="user generated poster">
+      <h2>${savedPosters[i].title}</h2>
+      <h4> ${savedPosters[i].quote}</h4>
+    </article>`
+  }
+}
 
 function makePosterButton() {    
   show(posterForm)
@@ -227,14 +245,3 @@ function nvmButton () {
   hide(posterForm)
 }
 
-
-
-// create an object OR connect to given object somehow
-// display users new poster on button click
-// event.preventDefault() apply where necessary
-// hide the randomized poster that is usually on the main page
-// push users input into the given array (savedposters)
-// temp store-empty [] function( {var array = []}) (currentposter)
-// .mini posters
-
-// we need to unhide line 24, hide line 11

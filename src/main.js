@@ -121,17 +121,23 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-var savedGrid;
-
 
 // Event Listeners 👇
-document.addEventListener('DOMContentLoaded', mainPageLoad)
+document.addEventListener('DOMContentLoaded', showRandomPoster)
 showRandomButton.addEventListener('click', showRandomPoster)
-makePosterButton.addEventListener('click', makePoster)
-showSavedButton.addEventListener('click', showSavedPoster)
-showSavedButton.addEventListener('click', displaySavedPosters);
-backToMainButton.addEventListener('click', backToMain)
-nvmBackToMainButton.addEventListener('click', takeMeBack)
+makePosterButton.addEventListener('click', function () {
+  displayCorrectPage(formPage, mainPage)
+})
+showSavedButton.addEventListener('click', function() {
+displayCorrectPage(savePage, mainPage)
+displaySavedPosters()
+})
+backToMainButton.addEventListener('click', function () {
+   displayCorrectPage(mainPage, savePage)
+})
+nvmBackToMainButton.addEventListener('click', function() {
+  displayCorrectPage(mainPage, formPage)
+})
 savePosterButton.addEventListener('click', saveAnyPoster)
 showMyPosterButton.addEventListener('click', function (event){
   event.preventDefault()
@@ -153,36 +159,31 @@ function createPoster(imageURL, title, quote) {
     imageURL: imageURL, 
     title: title, 
     quote: quote}
-}
-
-function mainPageLoad () {
-  currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
-  singleImage.src = currentPoster.imageURL
-  title.innerText = currentPoster.title
-  quote.innerText = currentPoster.quote
-}
-
-function showRandomPoster() {
-  currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
-  singleImage.src = currentPoster.imageURL
-  title.innerText = currentPoster.title
-  quote.innerText = currentPoster.quote
-}
-
-
-
-function displayUserInputPoster() {
-  currentPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
-  singleImage.src = currentPoster.imageURL
-  title.innerText = currentPoster.title
-  quote.innerText = currentPoster.quote
+  }
   
-  images.push(userInputImage.value)
-  titles.push(userInputTitle.value)
-  quotes.push(userInputQuote.value)
+  function displayCorrectPage(pageToShow, pageToHide) {
+    pageToShow.classList.remove('hidden')
+    pageToHide.classList.add('hidden')
+  }
 
-  hidePage(formPage)
-  showPage(mainPage)
+  function showRandomPoster() {
+    currentPoster = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+    singleImage.src = currentPoster.imageURL
+    title.innerText = currentPoster.title
+    quote.innerText = currentPoster.quote
+  }
+
+  function displayUserInputPoster() {
+    currentPoster = createPoster(userInputImage.value, userInputTitle.value, userInputQuote.value)
+    singleImage.src = currentPoster.imageURL
+    title.innerText = currentPoster.title
+    quote.innerText = currentPoster.quote
+    
+    images.push(userInputImage.value)
+    titles.push(userInputTitle.value)
+    quotes.push(userInputQuote.value)
+
+    displayCorrectPage(mainPage, formPage)
 }
 
 function saveAnyPoster() {
@@ -193,22 +194,21 @@ function saveAnyPoster() {
       return;
     }
   } if (!isDuplicate) {
-    savedPosters.push(currentPoster)
+      savedPosters.push(currentPoster)
   }
 }
 
 function displaySavedPosters() {
-  showPage(savedGrid)
-  hidePage(mainPage)
+  displayCorrectPage(savedGrid, mainPage)
 
   savedGrid.innerHTML = ''
   for (var i = 0; i < savedPosters.length; i++) {
     savedGrid.innerHTML +=
-    `<article class="mini-poster" id= "${savedPosters[i].id}">
-    <img src="${savedPosters[i].imageURL}" alt="user generated poster">
-    <h2>${savedPosters[i].title}</h2>
-    <h4> ${savedPosters[i].quote}</h4>
-    </article>`
+      `<article class="mini-poster" id= "${savedPosters[i].id}">
+      <img src="${savedPosters[i].imageURL}" alt="user generated poster">
+      <h2>${savedPosters[i].title}</h2>
+      <h4> ${savedPosters[i].quote}</h4>
+      </article>`
   }
 }
 
@@ -218,34 +218,6 @@ function deleteSaved (event) {
       savedPosters.splice(i, 1)
     }
   }
-  displaySavedPosters()
-}
-
-function showPage(element) {
-  element.classList.remove('hidden')
-}
-
-function hidePage(element) {
-  element.classList.add('hidden')
-}
-
-function makePoster() {    
-  showPage(formPage)
-  hidePage(mainPage)
-}
-
-function showSavedPoster() {
-  showPage(savePage)
-  hidePage(mainPage)
-}
-
-function backToMain() {
-  showPage(mainPage)
-  hidePage(savePage)
-}
-
-function takeMeBack () {
-  showPage(mainPage)
-  hidePage(formPage)
+    displaySavedPosters()
 }
 
